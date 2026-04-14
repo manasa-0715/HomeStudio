@@ -1,5 +1,4 @@
 package com.collegeproject.homestudio.model;
-
 import jakarta.persistence.*;
 import lombok.Data;
 

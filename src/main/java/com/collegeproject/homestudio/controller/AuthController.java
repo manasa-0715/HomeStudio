@@ -1,5 +1,4 @@
 package com.collegeproject.homestudio.controller;
-
 import com.collegeproject.homestudio.model.Admin;
 import com.collegeproject.homestudio.model.User;
 import com.collegeproject.homestudio.service.AuthService;

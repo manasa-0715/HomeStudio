@@ -1,5 +1,4 @@
 package com.collegeproject.homestudio.service;
-
 import com.collegeproject.homestudio.model.*;
 import com.collegeproject.homestudio.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +32,13 @@ public class OrderService {
             throw new RuntimeException("Cart is empty!");
         }
 
-        // calculate total amount
+        // calculate total
         double total = 0;
         for (CartItem item : cartItems) {
             total += item.getProduct().getPrice() * item.getQuantity();
         }
 
-        // create the order
+        // create order
         Order order = new Order();
         order.setUser(user);
         order.setTotalAmount(total);
@@ -57,7 +56,7 @@ public class OrderService {
             orderItemRepository.save(orderItem);
         }
 
-        // clear the cart after ordering
+        // clear cart after ordering
         for (CartItem item : cartItems) {
             cartItemRepository.deleteById(item.getCartItemId());
         }

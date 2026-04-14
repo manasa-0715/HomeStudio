@@ -1,5 +1,4 @@
 package com.collegeproject.homestudio.service;
-
 import com.collegeproject.homestudio.model.*;
 import com.collegeproject.homestudio.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class BudgetService {
         Double totalBudget = budget.getTotalBudget();
         String roomType = budget.getRoomType();
 
-        // get all products matching room type via category name
+        //products under one room type
         List<Product> allProducts = productRepository.findAll();
         List<Product> matchingProducts = new ArrayList<>();
 
@@ -49,7 +48,7 @@ public class BudgetService {
             }
         }
 
-        // greedily pick products within budget
+        // products within budget
         List<Product> recommended = new ArrayList<>();
         double remaining = totalBudget;
 
@@ -60,12 +59,12 @@ public class BudgetService {
             }
         }
 
-        // delete old recommendations for this budget
+        // delete old recommendations for the same budget
         List<RecommendedProduct> oldRecs = recommendedProductRepository
                 .findByBudgetBudgetId(budgetId);
         recommendedProductRepository.deleteAll(oldRecs);
 
-        // save new recommendations
+        // save new recomm
         List<RecommendedProduct> savedRecs = new ArrayList<>();
         for (Product product : recommended) {
             RecommendedProduct rec = new RecommendedProduct();

@@ -1,5 +1,4 @@
 package com.collegeproject.homestudio.service;
-
 import com.collegeproject.homestudio.model.Admin;
 import com.collegeproject.homestudio.model.User;
 import com.collegeproject.homestudio.repository.AdminRepository;
@@ -23,7 +22,6 @@ public class AuthService {
     private PasswordEncoder passwordEncoder;
 
     public User registerUser(User user) {
-        // encrypt password before saving
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setCreatedAt(LocalDateTime.now());
         return userRepository.save(user);
