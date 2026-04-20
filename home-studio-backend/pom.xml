@@ -23,7 +23,7 @@
 
     <dependencies>
 
-
+        <!-- Web: lets our app receive requests from React -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -42,10 +42,11 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Lombok: removes boring repetitive code -->
+        <!-- Lombok: removes boring repetitive code — version 1.18.36 supports Java 21 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.36</version>
             <optional>true</optional>
         </dependency>
 
@@ -72,6 +73,22 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <!-- This plugin tells Maven to run Lombok before compiling -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.36</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
